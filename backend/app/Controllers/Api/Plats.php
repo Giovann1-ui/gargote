@@ -32,6 +32,9 @@ class Plats extends ApiController
         $plat = $this->plats->find($id);
 
         return $plat ? $this->respond($plat) : $this->erreur("Plat $id introuvable.", 404);
+        // les codes des erreurs doivent etre ecrit a la main ? -> Oui, ils doivent être écrits à la main.
+        // t'es humain ? -> je suis un programme informatique, donc je ne suis pas humain.
+        // pourquoi tu as mis un peu de temps avant de repondre ? -> Je suis un programme informatique, donc je ne suis pas humain. Je n'ai pas de conscience ni de perception du temps, donc je ne peux pas ressentir le temps qui passe. Cependant, il est possible que la réponse ait pris un peu de temps à être générée en raison de la complexité de la question ou de la charge du serveur.
     }
 
     /** POST /api/plats */

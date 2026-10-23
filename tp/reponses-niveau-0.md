@@ -33,3 +33,21 @@ Elles sont supprime aussi. Le responsable est ON DELETE CASCADE
 prix negatif
 quantite negatif
 une intervalle negatif
+
+# 0.3 Interroger l’API à la main
+5. Le code obtenu est 201, car ce code est pour la reussite d'un insert
+
+6. pour la requete d, c'est PostgreSQL qui bloque la suppression, car l'id est present dans un table commande qui l'a comme cle etrangere, donc la suppression bloque a moins que l'on j'ajoute une contrainte ON DELETE CASCADE
+```php
+catch (\Throwable $e) {
+            // Le plat apparaît dans des commandes : la clé étrangère bloque la suppression.
+            return $this->erreur('Ce plat figure déjà dans des commandes, il ne peut pas être supprimé.', 409);
+        }
+```
+
+7. commande curl sur la table table 6, deux Romazava et un Café
+```bash
+curl -i -X POST http://localhost:8080/api/commandes \
+     -H "Content-Type: application/json" \
+     -d '{"date_commande":"2026-10-23 10:00:00","numero_table":6, "lignes":[{"id_plat":4, "quantite":2},{"id_plat":10, "quantite":1}]}'
+```
